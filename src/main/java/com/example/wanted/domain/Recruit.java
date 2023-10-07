@@ -12,12 +12,17 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member {
+public class Recruit {
     @Id
-    @Column(name = "member_id")
+    @Column(name = "recruit_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String email;
-    private String name;
-    private String password;
+    private String position;
+    private int pay;
+    private String content;
+    private String skill;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }
