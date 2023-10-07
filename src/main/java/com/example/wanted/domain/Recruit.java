@@ -1,16 +1,11 @@
 package com.example.wanted.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
 public class Recruit {
     @Id
@@ -25,4 +20,14 @@ public class Recruit {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @Builder
+    public Recruit(Long id, String position, int pay, String content, String skill, Company company) {
+        this.id = id;
+        this.position = position;
+        this.pay = pay;
+        this.content = content;
+        this.skill = skill;
+        this.company = company;
+    }
 }
