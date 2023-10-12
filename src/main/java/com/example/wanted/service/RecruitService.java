@@ -1,6 +1,6 @@
 package com.example.wanted.service;
 
-import com.example.wanted.domain.Recruit;
+import com.example.wanted.dto.RecruitRequestDto;
 import com.example.wanted.repository.RecruitRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,9 +18,8 @@ public class RecruitService {
     }
 
     //채용 공고 등록
-    public Long createRecruit(Recruit recruit) {
-        recruitRepository.save(recruit);
-        return recruit.getId();
+    public RecruitRequestDto createRecruit(RecruitRequestDto recruitDto) {
+        return recruitRepository.save(recruitDto);
     }
 
     //채용 공고 수정
@@ -34,12 +33,12 @@ public class RecruitService {
     }
 
     //채용 공고 목록 조회
-    public List<Recruit> findAllRecruits() {
+    public List<RecruitRequestDto> findAllRecruits() {
         return recruitRepository.findAll();
     }
 
     //채용 공고 상세 조회
-    public Optional<Recruit> findRecruitById(Long recruitId) {
+    public Optional<RecruitRequestDto> findRecruitById(Long recruitId) {
         return recruitRepository.findById(recruitId);
     }
 
