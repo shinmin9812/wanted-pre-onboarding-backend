@@ -7,6 +7,7 @@ import com.example.wanted.repository.RecruitRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -14,19 +15,25 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class RecruitService {
     private final RecruitRepository recruitRepository;
 
     //채용공고 생성
-    public void create(RecruitRequestDto recruitRequestDto) {
+    public Recruit createRecruit(RecruitRequestDto recruitRequestDto) {
         Recruit recruit = RecruitRequestDto.toRecruit(recruitRequestDto);
-        recruitRepository.save(recruit);
+        return recruitRepository.save(recruit);
     }
 
     //채용 공고 수정
+    public Recruit updateRecruit(Long id, RecruitRequestDto recruitRequestDto) {
+        Recruit recruit = recruitRepository.findById(id).orElseThrow(RuntimeException::new);
+        Recruit updateRecruit = RecruitRequestDto.updateRecruitFromDto(recruit, recruitRequestDto);
 
+        return recruitRepository.save(updateRecruit);
+    }
 
     //채용 공고 삭제
 

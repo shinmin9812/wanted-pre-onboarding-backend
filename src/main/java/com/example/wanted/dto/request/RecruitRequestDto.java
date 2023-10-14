@@ -21,4 +21,9 @@ public class RecruitRequestDto {
                 .company(recruitRequestDto.getCompany())
                 .build();
     }
+
+    public static Recruit updateRecruitFromDto(Recruit recruit, RecruitRequestDto recruitRequestDto) {
+        recruit.updateRecruit(recruitRequestDto);
+        return recruit;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.wanted.domain;
 
+import com.example.wanted.dto.request.RecruitRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,5 +30,24 @@ public class Recruit {
         this.content = content;
         this.skill = skill;
         this.company = company;
+    }
+
+    public void updateRecruit(RecruitRequestDto recruitRequestDto) {
+        if (recruitRequestDto.getPosition() != null) {
+            this.position = recruitRequestDto.getPosition();
+        }
+
+        if (recruitRequestDto.getPay() != 0) {
+            this.pay = recruitRequestDto.getPay();
+        }
+        if (recruitRequestDto.getContent() != null) {
+            this.content = recruitRequestDto.getContent();
+        }
+        if (recruitRequestDto.getSkill() != null) {
+            this.skill = recruitRequestDto.getSkill();
+        }
+        if (recruitRequestDto.getCompany() != null) {
+            this.company = recruitRequestDto.getCompany();
+        }
     }
 }

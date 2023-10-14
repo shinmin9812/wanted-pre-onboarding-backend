@@ -18,10 +18,14 @@ public class RecruitController {
     private final RecruitService recruitService;
 
     @PostMapping("/create")
-    public void create(@RequestBody RecruitRequestDto recruitRequestDto) {
-        recruitService.create(recruitRequestDto);
+    public void createRecruit(@RequestBody RecruitRequestDto recruitRequestDto) {
+        recruitService.createRecruit(recruitRequestDto);
     }
 
+    @PatchMapping("/{recruit_id}")
+    public void updateRecruit(@PathVariable Long recruit_id, @RequestBody RecruitRequestDto recruitRequestDto) {
+        recruitService.updateRecruit(recruit_id, recruitRequestDto);
+    }
 
     @GetMapping("")
     public List<Recruit> findAll() {
