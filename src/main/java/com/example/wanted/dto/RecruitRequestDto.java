@@ -1,25 +1,21 @@
 package com.example.wanted.dto;
 
-import com.example.wanted.domain.Company;
 import com.example.wanted.domain.Recruit;
 import lombok.Data;
 
 @Data
 public class RecruitRequestDto {
-    private Long id;
     private String position;
     private int pay;
     private String content;
     private String skill;
-    private Company company;
 
-    public Recruit toRecruit() {
+    public static Recruit toRecruit(RecruitRequestDto recruitRequestDto) {
         return Recruit.builder()
-                .position(position)
-                .pay(pay)
-                .content(content)
-                .skill(skill)
-                .company(company)
+                .position(recruitRequestDto.getPosition())
+                .pay(recruitRequestDto.getPay())
+                .content(recruitRequestDto.getContent())
+                .skill(recruitRequestDto.getSkill())
                 .build();
     }
 }

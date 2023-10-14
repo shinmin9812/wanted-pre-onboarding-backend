@@ -4,9 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "recruit")
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Recruit {
     @Id
     @Column(name = "recruit_id")
