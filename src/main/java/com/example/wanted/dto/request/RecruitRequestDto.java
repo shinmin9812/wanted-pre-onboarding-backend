@@ -1,5 +1,6 @@
-package com.example.wanted.dto;
+package com.example.wanted.dto.request;
 
+import com.example.wanted.domain.Company;
 import com.example.wanted.domain.Recruit;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ public class RecruitRequestDto {
     private int pay;
     private String content;
     private String skill;
+    private Company company;
 
     public static Recruit toRecruit(RecruitRequestDto recruitRequestDto) {
         return Recruit.builder()
@@ -16,6 +18,7 @@ public class RecruitRequestDto {
                 .pay(recruitRequestDto.getPay())
                 .content(recruitRequestDto.getContent())
                 .skill(recruitRequestDto.getSkill())
+                .company(recruitRequestDto.getCompany())
                 .build();
     }
 }
