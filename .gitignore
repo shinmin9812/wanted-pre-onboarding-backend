@@ -26,6 +26,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 src/main/resources/application-db.properties
+src/main/java/com/example/wanted/http
 
 ### NetBeans ###
 /nbproject/private/
