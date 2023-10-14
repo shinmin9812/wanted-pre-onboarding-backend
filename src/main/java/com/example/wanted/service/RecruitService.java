@@ -9,10 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Transactional
@@ -24,6 +21,7 @@ public class RecruitService {
     //채용공고 생성
     public Recruit createRecruit(RecruitRequestDto recruitRequestDto) {
         Recruit recruit = RecruitRequestDto.toRecruit(recruitRequestDto);
+
         return recruitRepository.save(recruit);
     }
 
@@ -36,7 +34,11 @@ public class RecruitService {
     }
 
     //채용 공고 삭제
+    public void deleteRecruit(Long id) {
+        Recruit recruit = recruitRepository.findById(id).orElseThrow(RuntimeException::new);
 
+        recruitRepository.deleteById(id);
+    }
 
     //채용 공고 목록 조회
     public List<Recruit> findAll() {

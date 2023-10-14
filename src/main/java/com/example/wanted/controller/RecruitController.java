@@ -27,6 +27,11 @@ public class RecruitController {
         recruitService.updateRecruit(recruit_id, recruitRequestDto);
     }
 
+    @DeleteMapping("/{recruit_id}")
+    public void deleteRecruit(@PathVariable Long recruit_id) {
+        recruitService.deleteRecruit(recruit_id);
+    }
+
     @GetMapping("")
     public List<Recruit> findAll() {
         return recruitService.findAll();
