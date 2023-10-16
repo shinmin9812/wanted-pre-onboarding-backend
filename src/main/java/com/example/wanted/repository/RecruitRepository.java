@@ -20,4 +20,5 @@ public interface RecruitRepository extends JpaRepository<Recruit, Long> {
     @Query("SELECT NEW com.example.wanted.dto.response.RecruitCompanyResponseDto(r.id, r.position, r.pay, r.skill, r.company.name, r.company.country, r.company.location) FROM recruit r JOIN r.company")
     List<RecruitCompanyResponseDto> findAllWithCompany();
 
+    List<RecruitCompanyResponseDto> findByCompanyNameContainingIgnoreCaseOrSkillContainingIgnoreCase(String companyName, String skill);
 }

@@ -43,4 +43,8 @@ public class RecruitController {
         return recruitService.findById(recruit_id);
     }
 
+    @GetMapping("/search")
+    public List<RecruitCompanyResponseDto> search(@RequestParam(value = "keyword") String keyword) {
+        return recruitService.searchRecruits(keyword);
+    }
 }

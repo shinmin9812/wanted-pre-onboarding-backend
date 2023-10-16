@@ -53,4 +53,9 @@ public class RecruitService {
         return RecruitResponseDto;
     }
 
+    //채용 공고 검색
+    public List<RecruitCompanyResponseDto> searchRecruits(String keyword) {
+        return recruitRepository.findByCompanyNameContainingIgnoreCaseOrSkillContainingIgnoreCase(keyword, keyword);
+    }
+
 }
