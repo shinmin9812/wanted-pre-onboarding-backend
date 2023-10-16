@@ -2,6 +2,7 @@ package com.example.wanted.controller;
 
 import com.example.wanted.domain.Recruit;
 import com.example.wanted.dto.request.RecruitRequestDto;
+import com.example.wanted.dto.response.RecruitCompanyResponseDto;
 import com.example.wanted.dto.response.RecruitResponseDto;
 import com.example.wanted.service.RecruitService;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ public class RecruitController {
     }
 
     @GetMapping("")
-    public List<Recruit> findAll() {
+    public List<RecruitCompanyResponseDto> findAll() {
         return recruitService.findAll();
     }
 
