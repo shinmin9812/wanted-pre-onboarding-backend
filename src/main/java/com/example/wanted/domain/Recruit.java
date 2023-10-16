@@ -4,6 +4,10 @@ import com.example.wanted.dto.request.RecruitRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "recruit")
 @Getter
@@ -21,6 +25,9 @@ public class Recruit {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
+    @OneToMany(mappedBy = "recruit")
+    private Set<Apply> members = new HashSet<>();
 
     @Builder
     public Recruit(Long id, String position, int pay, String content, String skill, Company company) {
