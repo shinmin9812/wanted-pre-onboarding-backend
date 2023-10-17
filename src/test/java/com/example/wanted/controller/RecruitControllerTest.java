@@ -13,7 +13,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -108,8 +107,25 @@ public class RecruitControllerTest {
     @Test
     void 채용공고_목록_조회() throws Exception {
         //given
-        RecruitCompanyResponseDto testDto1 = new RecruitCompanyResponseDto(1L, "백엔드 개발자", 350000, "Spring", "네이버", "한국", "판교");
-        RecruitCompanyResponseDto testDto2 = new RecruitCompanyResponseDto(2L, "백엔드 개발자", 400000, "Spring", "배달의민족", "한국", "판교");
+        RecruitCompanyResponseDto testDto1 = RecruitCompanyResponseDto.builder()
+                .id(1L)
+                .position("백엔드 개발자")
+                .pay(350000)
+                .skill("Spring")
+                .companyName("네이버")
+                .companyCountry("한국")
+                .companyLocation("판교")
+                .build();
+
+        RecruitCompanyResponseDto testDto2 = RecruitCompanyResponseDto.builder()
+                .id(2L)
+                .position("백엔드 개발자")
+                .pay(400000)
+                .skill("Spring")
+                .companyName("배달의민족")
+                .companyCountry("한국")
+                .companyLocation("판교")
+                .build();
 
         List<RecruitCompanyResponseDto> recruitList = Arrays.asList(testDto1, testDto2);
 
@@ -162,8 +178,25 @@ public class RecruitControllerTest {
         //given
         String keyword = "Spring";
 
-        RecruitCompanyResponseDto testDto1 = new RecruitCompanyResponseDto(1L, "백엔드 개발자", 350000, "Spring", "네이버", "한국", "판교");
-        RecruitCompanyResponseDto testDto2 = new RecruitCompanyResponseDto(2L, "백엔드 개발자", 400000, "Django", "배달의민족", "한국", "판교");
+        RecruitCompanyResponseDto testDto1 = RecruitCompanyResponseDto.builder()
+                .id(1L)
+                .position("백엔드 개발자")
+                .pay(350000)
+                .skill("Spring")
+                .companyName("네이버")
+                .companyCountry("한국")
+                .companyLocation("판교")
+                .build();
+
+        RecruitCompanyResponseDto testDto2 = RecruitCompanyResponseDto.builder()
+                .id(2L)
+                .position("백엔드 개발자")
+                .pay(400000)
+                .skill("Spring")
+                .companyName("배달의민족")
+                .companyCountry("한국")
+                .companyLocation("판교")
+                .build();
 
         List<RecruitCompanyResponseDto> lists = Arrays.asList(testDto1, testDto2);
 

@@ -37,9 +37,9 @@ public class RecruitService {
 
     //채용 공고 삭제
     public void deleteRecruit(Long id) {
-        Recruit recruit = recruitRepository.findById(id).orElseThrow(() -> new NotFoundException("이미 삭제된 채용 공고입니다."));
+        Recruit recruit = recruitRepository.findById(id).orElseThrow(null);
 
-        recruitRepository.deleteById(id);
+        recruitRepository.delete(recruit);
     }
 
     //채용 공고 목록 조회

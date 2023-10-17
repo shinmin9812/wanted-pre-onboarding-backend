@@ -1,8 +1,10 @@
 package com.example.wanted.dto.response;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class RecruitCompanyResponseDto {
     private Long id;
     private String position;
