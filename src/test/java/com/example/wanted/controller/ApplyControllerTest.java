@@ -35,19 +35,19 @@ public class ApplyControllerTest {
         Long recruitId = 3L;
 
         Member member = Member.builder()
-                        .id(1L)
-                        .build();
+                .id(1L)
+                .build();
 
         Recruit recruit = Recruit.builder()
-                        .id(3L)
-                        .build();
+                .id(3L)
+                .build();
 
         doNothing().when(applyService).applyToRecruit(memberId, recruitId);
         //when
         mockMvc.perform(MockMvcRequestBuilders.post("/applies")
-                .param("memberId", member.getId().toString())
-                .param("recruitId", recruit.getId().toString())
-                .contentType(MediaType.APPLICATION_JSON))
+                        .param("memberId", member.getId().toString())
+                        .param("recruitId", recruit.getId().toString())
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
         //then

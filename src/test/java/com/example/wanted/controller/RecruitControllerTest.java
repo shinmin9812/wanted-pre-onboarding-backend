@@ -52,8 +52,8 @@ public class RecruitControllerTest {
 
         //when
         mockMvc.perform(MockMvcRequestBuilders.post("/recruits/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(testDto)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(testDto)))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
         //then
@@ -79,8 +79,8 @@ public class RecruitControllerTest {
 
         //when
         mockMvc.perform(MockMvcRequestBuilders.patch("/recruits/{recruit_id}", recruitId)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(testDto)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(testDto)))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
         //then
@@ -203,8 +203,8 @@ public class RecruitControllerTest {
         Mockito.when(recruitService.searchRecruits(keyword)).thenReturn(lists);
         //when
         mockMvc.perform(MockMvcRequestBuilders.get("/recruits/search")
-                .param("keyword", keyword)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .param("keyword", keyword)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
                 .andExpect(jsonPath("$[0].position").value("백엔드 개발자"))
@@ -218,4 +218,4 @@ public class RecruitControllerTest {
         Mockito.verify(recruitService, Mockito.times(1)).searchRecruits(keyword);
 
     }
- }
+}

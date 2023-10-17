@@ -67,7 +67,7 @@ public class ApplyServiceTest {
     }
 
     @Test
-    void 이미_지원한_채용공고_지원() throws Exception{
+    void 이미_지원한_채용공고_지원() throws Exception {
         //given
         Long memberId = 1L;
         Long recruitId = 2L;
